@@ -1,0 +1,52 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <cstdio>
+#include <math.h>
+#include <iostream>
+#define MAX 100
+
+int main()
+{
+	freopen("input.txt", "rt", stdin);
+
+	for (int t = 1; t <= 10; t++) {
+		int dumpCount;
+		int arr[MAX];
+		scanf("%d",&dumpCount);
+		
+		int ans;
+
+		for (int i = 0; i < MAX; i++) {
+			scanf("%d", &arr[i]);
+		}
+
+		
+
+		for (int i = 0; i <= dumpCount; i++) {
+			int min[2] = { 100,0 };
+			int max[2] = { 0,0 };
+
+			for (int j = 0; j < MAX; j++) {
+				if (arr[j] > max[0]) {
+					max[0] = arr[j];
+					max[1] = j;
+				}
+				if (arr[j] < min[0]) {
+					min[0] = arr[j];
+					min[1] = j;
+				}
+			}
+
+			ans = abs(arr[min[1]] - arr[max[1]]);
+
+			if (ans <= 1) break;
+			else {
+
+				arr[min[1]]++;
+				arr[max[1]]--;
+
+
+			}
+		}
+		printf("#%d %d\n", t, ans);
+	}
+}

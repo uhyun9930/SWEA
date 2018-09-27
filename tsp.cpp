@@ -9,6 +9,15 @@ using namespace std;
 int N=4;
 int ret;
 int graph[4][4];
+
+
+/*
+	int로 visited를 나타내는 이유 (bool이 아닌)
+	int Memo[N][1<<N]로 표현하여 DP구현이 가능하기 때문
+	visited가 갖는 범위 1<<N
+	N은 도시 갯수
+*/
+
 int solve(int pos, int visited) {
 	
 	//BASE CASE 
